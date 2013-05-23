@@ -1,5 +1,6 @@
 import java.util.Calendar;
 
+
 public final class Candlestick {
 	
 	private final double abertura;
