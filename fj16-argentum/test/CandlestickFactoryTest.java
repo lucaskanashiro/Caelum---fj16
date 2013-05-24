@@ -4,6 +4,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+
 
 public class CandlestickFactoryTest {
 
@@ -67,14 +73,33 @@ public class CandlestickFactoryTest {
 	@Test
 	public void negociosEmOrdemCrescenteDeValor() {
 		
+        Negocio primeiro = new Negocio(200, 1, Calendar.getInstance());
+		Negocio segundo = new Negocio(100, 2, Calendar.getInstance());
+
+		List<Negocio> negocios = Arrays.asList(segundo, primeiro);
+		List<Negocio> negocios2 = Arrays.asList(primeiro, segundo);
+		CandlestickFactory fabrica = new CandlestickFactory();
+		negocios2 = fabrica.ordernarListaDeNegocioCrescente(negocios2);
+
+		Assert.assertEquals(negocios2, negocios);
+            
+		
 	}
 	
 	@Test
 	public void negociosEmOrdemDecrescenteDeValor() {
 		
+		Negocio primeiro = new Negocio(200, 1, Calendar.getInstance());
+		Negocio segundo = new Negocio(100, 2, Calendar.getInstance());
+
+		List<Negocio> negocios2 = Arrays.asList(primeiro, segundo);
+		List<Negocio> negocios = Arrays.asList(primeiro, segundo);
+
+		CandlestickFactory fabrica = new CandlestickFactory();
+		negocios2 = fabrica.ordernarListaDeNegocioDecrescente(negocios2);
+
+		Assert.assertEquals(negocios2, negocios);
 	}
 
 	
-
-
 }

@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CandlestickFactory {
@@ -40,6 +44,36 @@ public class CandlestickFactory {
 		
 		return new Candlestick(abertura, fechamento, minimo, maximo,volume, data);
 	
+	}
+        
+        public List <Negocio> ordernarListaDeNegocioCrescente(List<Negocio> listaNegocio){
+		alternarPorValorCrescente(listaNegocio);
+		return listaNegocio;
+	}
+
+	private void alternarPorValorCrescente(List<Negocio> listaNegocio) {
+		Collections.sort(listaNegocio, new Comparator(){
+			public int compare(Object o1, Object o2){
+				Negocio negocio1 = (Negocio) o1;
+				Negocio negocio2 = (Negocio) o2;
+				return negocio1.getPreco()<negocio2.getPreco()? -1 : (negocio1.getPreco()>negocio2.getPreco()?+1 : 0);
+			}
+		});
+	}
+
+	public List <Negocio> ordernarListaDeNegocioDecrescente(List<Negocio> listaNegocio){
+		alternarPorValorDecrescente(listaNegocio);
+		return listaNegocio;
+	}
+
+	private void alternarPorValorDecrescente(List<Negocio> listaNegocio) {
+		Collections.sort(listaNegocio, new Comparator(){
+			public int compare(Object o1, Object o2){
+				Negocio negocio1 = (Negocio) o1;
+				Negocio negocio2 = (Negocio) o2;
+				return negocio1.getPreco()>negocio2.getPreco()? -1 : (negocio1.getPreco()<negocio2.getPreco()?+1 : 0);
+			}
+		});
 	}
 
 }

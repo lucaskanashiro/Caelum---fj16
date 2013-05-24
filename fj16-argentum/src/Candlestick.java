@@ -12,7 +12,7 @@ public final class Candlestick {
 	
 	public Candlestick(double abertura,double fechamento,double minimo,	double maximo, double volume, Calendar data) {
 		
-		if(minimo >= maximo)
+		if(minimo > maximo)
 			throw new IllegalArgumentException("Minimo nao deve ser maior que maximo");
 		
 		if(data == null)
